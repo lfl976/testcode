@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	// https://babeljs.io/docs/en/babel-plugin-transform-block-scoping
+
+	// {
+	// 	let a = 3 // is not define
+	// }
+
+	{
+		var a = 4 // 提升到全局了
+	}
+
+	console.log(a)
+</script>
+</body>
+</html>

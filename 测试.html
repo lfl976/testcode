@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.24.0/moment.js"></script>
+<body>
+	
+	<div id="app"></div>
+<script type="text/javascript">
+	let m = moment().endOf('day')
+	console.log(m)
+	const app = document.getElementById('app')
+	const inner = ['<div>1</div>','<div>2</div>']
+	const inner2 = [1,2]
+	// app.innerHTML = inner.join('')
+	app.innerHTML = inner2
+</script>
+</body>
+</html>

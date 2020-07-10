@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>x</title>
+	<style type="text/css">
+		body {
+		    -webkit-tap-highlight-color: transparent;
+		    outline: 0;
+		    color: #000;
+		    line-height: 1.5;
+		    font-size: 16px;
+		}
+		.mqcc-numberbox {
+		    display: inline-table;
+		    position: relative;
+		}
+		.mqcc-numberbox-btn {
+		    display: table-cell;
+		    vertical-align: middle;
+		    position: relative;
+		    background-color: #fff;
+		    width: 40px;
+		}
+		.mqcc-numberbox-icon-minus, .mqcc-numberbox-icon-plus {
+		    display: block;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-indent: 100%;
+		    position: relative;
+		}
+		.mqcc-numberbox-btn:before {
+		    content: " ";
+		    width: 200%;
+		    height: 200%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    border: 2px solid #ddd;
+		    -webkit-transform: scale(.5);
+		    transform: scale(.5);
+		    -webkit-transform-origin: 0 0;
+		    transform-origin: 0 0;
+		    box-sizing: border-box;
+		    border-radius: 0;
+		}
+		.mqcc-numberbox-btn-disabled .mqcc-numberbox-icon-minus:after, .mqcc-numberbox-btn-disabled .mqcc-numberbox-icon-minus:before, .mqcc-numberbox-btn-disabled .mqcc-numberbox-icon-plus:before {
+    background-color: #bbb;
+}
+		.mqcc-numberbox-icon-minus:before, .mqcc-numberbox-icon-plus:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 10px;
+    height: 1px;
+    background-color: #666;
+}
+.mqcc-numberbox-input:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 2px solid #ddd;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+	</style>
+</head>
+<body>
+<div class="mqcc-numberbox">
+    <span class="mqcc-numberbox-btn mqcc-numberbox-btn-disabled">
+        <span class="mqcc-numberbox-icon-minus">-</span>
+    </span>
+    <div class="mqcc-numberbox-input">
+        <input type="tel">
+    </div>
+    <span class="mqcc-numberbox-btn">
+        <span class="mqcc-numberbox-icon-plus">+</span>
+    </span>
+    <span class="mqcc-numberbox-unit">台 <span class="unit-extra">(1-100台)</span></span>
+</div>
+</body>
+</html>

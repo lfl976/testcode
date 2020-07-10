@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<textarea id="area" rows="30" cols="30" value="323">56</textarea>
+
+<script type="text/javascript">
+	const area = document.getElementById('area');
+
+	// area.value = JSON.stringify({
+	// 	"a": "a/n",
+	// 	"b": "b",
+	// }, null, 4)
+	area.value = JSON.stringify({
+		"a": "a&#10\r\n",
+		"b": "b",
+	}) 
+</script>
+</body>
+</html>

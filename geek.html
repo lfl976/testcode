@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="app"><div>1</div>2<div>3</div>4
+</div>
+<script type="text/javascript">
+	let dom = document.getElementById("app")
+function reverseChildren(element) {
+	let children = element.childNodes
+	let l = children.length
+	while(l-- > 0) {
+		element.appendChild(element.childNodes[l])
+	}
+}
+reverseChildren(dom)
+</script>
+prototype
+</body>
+</html>

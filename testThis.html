@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var Hightcharts = {
+		a: 'hhh',
+		dateFormat: function(s) {
+			console.log(s);
+		}
+	}
+	// Hightcharts.dateFormat(this.a)
+
+	let options = {
+		a: 'ooo',
+		b: Hightcharts.dateFormat(this), // window，直接执行，返回值undefine
+		c: function(x) {
+			console.log(x)    // window
+			console.log(this) // options
+		}
+	}
+	options.c(this)
+
+</script>
+</body>
+</html>

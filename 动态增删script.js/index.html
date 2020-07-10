@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<button onclick="adds()">Add Script</button>
+	<button onclick="remove()">Remove Script</button>
+<script>
+	function adds() {
+		let script = document.createElement("script");
+		script.src = './index.js';
+		script.id = 'script';
+		script.index= '1';
+		document.body.appendChild(script);
+	}
+	function remove() {
+		let script = document.querySelector("#script");
+		console.log(script.index)
+		document.body.removeChild(script);
+	}
+</script>
+</body>
+</html>

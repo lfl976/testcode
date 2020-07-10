@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>s</title>
+</head>
+<body>
+<script type="text/javascript">
+	[[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
+		  const flatten = acc.concat(item);
+		acc[index] = flatten
+		 console.log(acc)
+		  return flatten;
+		});
+
+	
+
+	var a= [1,2,3,4].reduce((acc,curr,i,a)=>{
+    let index = Math.floor(i/3)
+    
+    if(!acc[index]){
+        acc[index]=[]
+    }
+    acc[index].push(curr)
+    return acc
+},[])
+	console.log(a)
+</script>
+</body>
+</html>

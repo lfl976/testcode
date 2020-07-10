@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+	// --------1---------------
+	function Animal() {
+		this.name = 'A'
+		this.eat = function() {
+			console.log('A eat')
+		}
+	}
+
+	Animal.prototype.bark = function() {
+		console.log('A bark')
+	}
+
+	let animal = new Animal()
+	console.log(animal)
+
+
+
+	// -----------2-----------
+	function Dog() {
+		this.name = 'Dog'
+		this.run = function() {console.log('run')}
+	}
+
+	Dog.prototype = animal;
+	// Dog.prototype.constructor = Dog;
+
+	let dog = new Dog()
+
+
+
+
+	// -----3-----------
+	function DogChild() {
+		this.name = 'DogChild'
+	}
+
+	DogChild.prototype = dog;
+
+	let dogChild = new DogChild()
+	console.log(dogChild)
+</script>
+</body>
+</html>

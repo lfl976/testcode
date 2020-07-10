@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="file" name="a">
+<button id="btn">清除file</button>
+
+<script>
+	var f = document.querySelector('input');
+	var btn = document.querySelector("button");
+	f.addEventListener('change',function(e){
+		console.log(e.target.files)
+	})
+	btn.onclick = function(){
+		f.value = ''
+		console.log(f.value)
+	}
+</script>
+</body>
+</html>
