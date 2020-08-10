@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var ret = 0;
+
+		function recu1() {
+			if(ret < 30) {  // Maximum call stack size exceeded
+				recu1()
+			}
+			ret++;
+			console.log(ret)
+		}
+
+		function recu2() {
+			ret++;        // right
+			console.log(ret)
+			if(ret < 30) {
+				recu2()
+			}
+		}
+		
+		function recu3() {
+			if(ret < 3) {
+				setTimeout(recu3,100)
+			}
+			ret++;
+			console.log(ret) // jQuery源码 7277行
+		}
+
+		
+
+
+
+
+
+
+
+
+		// 作用域
+		function scop1() {
+			var abc = '123'
+		}
+		scop1()
+		// console.log(abc) //abc is not defined
+	</script>
+</body>
+</html>

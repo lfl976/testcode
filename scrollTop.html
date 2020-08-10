@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./jquery/jquery-3.5.1.js"></script>
+</head>
+<body onscroll="console.log('scroll')">
+	<button onclick="scroll3()">click</button>
+	<!-- $0.scrollTop = 120 -->
+	<!-- 元素有滚动条，元素的内容向上滚动 -->
+	<div id="box" style="border: 1px solid red;height:400px;overflow: auto;">1
+	<div style="height: 600px;background: green"></div>
+	</div>
+	<div style="border: 1px solid red;height:1000px">2</div>
+
+	<script>
+		function scroll3(){
+			console.log(123)
+			$('html, body').animate({
+				scrollTop: '300px',
+			})
+			// $('#box').animate({
+			// 	marginTop: '100px',
+			// })
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function outer() {
+			let inner = function() {  // 变量是个函数，定义在堆内存中？
+				console.log(this)
+			}
+			inner()
+		}
+		outer()
+
+	</script>
+</body>
+</html>
