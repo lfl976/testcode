@@ -14,10 +14,9 @@
         function totalScore(nums) {
             let A = []
             let B = []
-            let totalA = 0
-            let totalB = A.reduce((acc, curr) => acc + curr,0)
-            let index = B.reduce((acc, curr) => acc + curr,0)
-            
+            let index = 0
+            let first = nums[0]
+            let last = nums[nums.length - 1]
             while (nums.length) {
                 if (index % 2 === 0) {
                     if (totalScore(nums.slice(1)).totalA >= totalScore(nums.slice(0, nums.length - 1)).totalB) {
@@ -32,7 +31,7 @@
                         B.push(nums.pop())
                     }
                 }
-                index ++
+                index++
             }
 
             return {
@@ -42,11 +41,11 @@
         }
 
         let score = totalScore(nums)
-        console.log(score)
+
         return score.totalA >= score.totalB
     };
 
-    PredictTheWinner([1,5,2])
+    PredictTheWinner([1, 5, 2])
     </script>
 </body>
 
