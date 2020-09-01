@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var canVisitAllRooms = function(rooms) {
+        var visited = [true];
+        var start = rooms[0];
+
+        function visit(room) {
+            if (room.length <= 0) {
+                return
+            }
+            for (var i = 0; i < room.length; i++) {
+                if (room[i]) {
+                    var n = room.shift()
+                    i--;
+                    visited[n] = true;
+                    visit(rooms[n])
+                }
+            }
+        }
+        visit(start)
+        console.log(visited);
+        if (visited.filter(item => item).length === rooms.length) {
+            return true;
+        }
+        return false;
+    };
+
+    
+    canVisitAllRooms([[1],[2],[3],[]])
+    </script>
+</body>
+
+</html>

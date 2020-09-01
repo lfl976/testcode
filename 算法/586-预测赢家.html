@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var PredictTheWinner = function(nums) {
+
+        function totalScore(nums) {
+            let A = []
+            let B = []
+            let totalA = 0
+            let totalB = A.reduce((acc, curr) => acc + curr,0)
+            let index = B.reduce((acc, curr) => acc + curr,0)
+            
+            while (nums.length) {
+                if (index % 2 === 0) {
+                    if (totalScore(nums.slice(1)).totalA >= totalScore(nums.slice(0, nums.length - 1)).totalB) {
+                        A.push(nums.shift())
+                    } else {
+                        A.push(nums.pop())
+                    }
+                } else {
+                    if (totalScore(nums.slice(1)).totalB > totalScore(nums.slice(0, nums.length - 1)).totalA) {
+                        B.push(nums.shift())
+                    } else {
+                        B.push(nums.pop())
+                    }
+                }
+                index ++
+            }
+
+            return {
+                totalA: A.reduce((acc, curr) => acc + curr, 0),
+                totalB: B.reduce((acc, curr) => acc + curr, 0),
+            }
+        }
+
+        let score = totalScore(nums)
+        console.log(score)
+        return score.totalA >= score.totalB
+    };
+
+    PredictTheWinner([1,5,2])
+    </script>
+</body>
+
+</html>

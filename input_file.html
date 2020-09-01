@@ -5,14 +5,72 @@
 </head>
 <body>
 <input type="file" name="a">
+<button id="btn1">readAsArrayBuffer</button>
+<button id="btn2">readAsBinaryString</button>
+<button id="btn3">readAsDataUrl</button>
+<button id="btn4">readAsText</button>
 <button id="btn">清除file</button>
 
 <script>
+	let arrBuff = document.getElementById('btn1')
+	let binStr = document.getElementById('btn2')
+	let dUrl = document.getElementById('btn3')
+	let text = document.getElementById('btn4')
+
+	const reader = new FileReader();
+
+	let file = ''
+
 	var f = document.querySelector('input');
 	var btn = document.querySelector("button");
 	f.addEventListener('change',function(e){
 		console.log(e.target.files)
+		file = e.target.files[0];
 	})
+
+	reader.addEventListener('loadstart', function(event) {
+		console.log(event.type)
+	});
+	reader.addEventListener('loadend', function(event) {
+		console.log(event.type)
+	});
+	reader.addEventListener('progress', function(event) {
+		console.log(event.type)
+	});
+	reader.addEventListener('error', function(event) {
+		console.log(event.type)
+	});
+
+	reader.addEventListener("load", function () {
+	    console.log(reader)
+	    // console.log(reader.getAsBinary())
+	  }, false);
+
+
+	arrBuff.addEventListener('click', function(){
+		if (file) {
+		   reader.readAsArrayBuffer(file);
+		}
+	})
+	binStr.addEventListener('click', function(){
+		if (file) {
+		   reader.readAsBinaryString(file);
+		}
+	})
+	dUrl.addEventListener('click', function(){
+		if (file) {
+		   reader.readAsDataURL(file);
+		}
+	})
+	text.addEventListener('click', function(){
+		if (file) {
+		   reader.readAsText(file);
+		}
+	})
+
+
+
+	
 	btn.onclick = function(){
 		f.value = ''
 		console.log(f.value)
