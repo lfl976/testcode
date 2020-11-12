@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		::marker{
+			display: 'none'
+		}
+		li{
+			list-style: 'none'
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<script>
+		var lis = document.getElementsByTagName('li')
+		console.log(lis)
+
+		// for(var i = 0; i < lis.length; i++) {
+		// 	(function(i) {
+		// 		lis[i].onclick = function() {
+		// 			console.log(i)
+		// 		}
+		// 	})(i)
+		// }
+
+		// for(var i = 0; i < lis.length; i++) {
+		// 	lis[i].onclick = function() {
+		// 		console.log(i)
+		// 	}	
+		// }
+
+		var i = 0
+
+		lis[i].onclick = function() {
+			console.log(i)
+		}
+		i++
+		lis[i].onclick = function() {
+			console.log(i)
+		}
+		i++
+		lis[i].onclick = function() {
+			console.log(i)
+		}
+		i++
+		lis[i].onclick = function() {
+			console.log(i)
+		}
+		i++
+		lis[i].onclick = function() {
+			console.log(i)
+		}
+		i++
+
+
+		// 倒序
+		// var l = ul.children.length
+		// while(l-- > 0){ul.appendChild(ul.children[l])}
+	</script>
+</body>
+</html>

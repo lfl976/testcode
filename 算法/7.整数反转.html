@@ -29,6 +29,79 @@
     //     return s
     // };
     </script>
+    <script>
+    // var reverse = function(x) {
+    //     x = String(x).split('')
+    //     let right = x.length - 1
+    //     for (let left = 0; left < x.length / 2; left++) {
+    //         let temp = x[left];
+    //         x[left] = x[right - left];
+    //         x[right - left] = temp;
+    //     }
+    //     return x.join('')
+    // };
+    </script>
+    <script>
+    // var reverse = function(x) {
+    //     x = String(x).split('')
+    //     let left = 0
+    //     let right = x.length - 1
+    //     let len = x.length
+    //     while(left <= right) {
+    //         console.log(left,right)
+    //         if(x[left] === '-') {
+    //             left++
+    //         } else {
+    //             if(x[right] === '0') {
+    //                 right--
+    //                 len--
+    //             } else {
+    //                 let temp = x[left]
+    //                 x[left] = x[right]
+    //                 x[right] = temp
+    //                 left++
+    //                 right--
+    //             }
+    //         }
+    //     }
+    //     x.length = len
+    //     return x.join('')
+    // };
+    </script>
+    <script>
+    // var reverse = function(x) {
+    //     let num = []
+    //     let scale = []
+    //     let i = 1
+
+    //     while(x!=0) {
+    //         num.push(x%10)
+    //         scale.unshift(i)
+    //         x = ~~(x/10)
+    //         i = i * 10
+    //     }
+    //     console.log(num)
+    //     console.log(scale)
+    //     return num.reduce((acc,curr,index)=>{
+    //         return acc+curr*scale[index]
+    //     },0)
+    // };
+    </script>
+
+    <script>
+    var reverse = function(x) {
+        let res = 0
+        while(x!=0) {
+            let temp = x%10
+            x = ~~(x/10)
+
+            console.log(`res*10+temp=${res*10+temp}`)
+        }
+        
+        
+    };
+    </script>
+
 </body>
 
 </html>

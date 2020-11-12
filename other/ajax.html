@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	online test api address:https://resttesttest.com/
+<script>
+	var xhttp = new XMLHttpRequest();
+	var response = ''
+	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	response = this
+	        console.log(this.response)
+	    }
+	};
+	xhttp.open("GET", "https://httpbin.org/get", true);
+	xhttp.setRequestHeader("X-token","fake-fake")
+	xhttp.send();
+</script>
+</body>
+</html>

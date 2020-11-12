@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div></div>
+<br />
+<body>
+    <script>
+    var sortString = function(s) {
+    s = s.split('')
+    let flag = 1
+    let result = ''
+    let prevMin = ''
+    let prevMax = ''
+
+    while(s.length) {
+        if(flag === 1) {
+            let min = getMin()
+            if(prevMin){
+                if(min && min > prevMin) {
+                    let  index = s.indexOf(min)
+                    result += min
+                    s.splice(index,1)
+                    prevMin = min
+                }else {
+                    flag = 2
+                    prevMax = ''
+                }
+            }else {
+                let  index = s.indexOf(min)
+                result += min
+                s.splice(index,1)
+                prevMin = min
+            }
+        }else if(flag === 2) {
+            let max = getMax()
+            if(prevMax) {
+                if(max && max < prevMax) {
+                    let index = s.indexOf(max)
+                    result += max
+                    s.splice(index,1)
+                     prevMax = max
+                }else {
+                    flag = 1
+                    prevMin = ''
+                }
+            }else {
+                let index = s.indexOf(max)
+                result += max
+                s.splice(index,1)
+                 prevMax = max
+            }
+           
+        }
+    }
+    
+
+    function getMax() {
+        if(prevMax) {
+            let arr = s.filter(item => item < prevMax)
+            if(arr.length) {
+                arr = arr.sort((a,b)=>b.charCodeAt()-a.charCodeAt())
+                return arr[0]
+            }else {
+                return ''
+            }
+        }else {
+            return String.fromCharCode(Math.max(...s.map(item => item.charCodeAt(0))))
+        }
+    }
+
+    function getMin() {
+        if(prevMin) {
+            let arr = s.filter(item => item > prevMin)
+            if(arr.length) {
+                arr = arr.sort((a,b)=>a.charCodeAt()-b.charCodeAt())
+                return arr[0]
+            }else{
+                return ''
+            }
+        }else {
+            return String.fromCharCode(Math.min(...s.map(item => item.charCodeAt(0))))
+        }
+    }
+    return result
+};
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+
+for(let i = 0; i < n; i++){
+        for(let j = 0; j < m+n;j++) {
+            if(nums2[i]<nums1[j]){
+                nums1.splice(0,0,nums2[i])
+            }else{
+                if(nums1[j+1]){
+                    if(nums2[i]<nums1[j+1]){
+                        nums1.splice(j,0,nums2[i])
+                    }
+                }else{
+                    nums1.splice(j,0,nums2[i])
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+let index = 0
+    for(let i = 0; i < m+n;i++){
+        while(index < n) {
+            if(nums2[index] < nums1[i]){
+                let j = i-1<0?0:i-1
+                nums1.splice(j,0,nums2[index])
+                i++
+                index++
+            }else{
+                if(nums2[index] < nums1[i+1]){
+                    nums1.splice(i,0,nums2[index])
+                    i++
+                    index++
+                }else{
+                    break
+                }
+            }
+        }
+    }
+
+
+let arr1 = []
+    let arr2 = []
+    for (let  i = 0; i < l1.length; i++) {
+        arr1.push(new ListNode(l1[i]))
+        arr2.push(new ListNode(l2[i]))
+    }
+    for (let  i = 0; i < arr1.length - 1; i++) {
+        arr1[i].next = arr1[i + 1]
+        arr2[i].next = arr2[i + 1]
+    }
+
+		*/
+	</script>
+	<script>
+		const data = [
+    { time: "00:00", value: 10, instance: "ins-bmwh571" },
+    { time: "01:00", value: 20, instance: "ins-bmwh571" },
+    { time: "02:00", value: 60, instance: "ins-bmwh571" },
+    { time: "03:00", value: 60, instance: "ins-bmwh571" },
+    { time: "04:00", value: 20, instance: "ins-bmwh571" },
+    { time: "05:00", value: 72, instance: "ins-bmwh571" },
+    { time: "06:00", value: 98, instance: "ins-bmwh571" },
+    { time: "07:00", value: 60, instance: "ins-bmwh571" },
+    { time: "08:00", value: 70, instance: "ins-bmwh571" },
+    { time: "09:00", value: 58, instance: "ins-bmwh571" },
+    { time: "10:00", value: 22, instance: "ins-bmwh571" },
+    { time: "11:00", value: 68, instance: "ins-bmwh571" },
+    { time: "12:00", value: 83, instance: "ins-bmwh571" },
+
+    // { time: "00:00", value: 10, instance: "ins-bmwh57a12" },
+    // { time: "01:00", value: 20, instance: "ins-bmwh57a12" },
+    // { time: "02:00", value: 110, instance: "ins-bmwh57a12" },
+    // { time: "03:00", value: 60, instance: "ins-bmwh57a12" },
+    // { time: "04:00", value: 50, instance: "ins-bmwh57a12" },
+    // { time: "05:00", value: 88, instance: "ins-bmwh57a12" },
+    // { time: "06:00", value: 98, instance: "ins-bmwh57a12" },
+    // { time: "07:00", value: 20, instance: "ins-bmwh57a12" },
+    // { time: "08:00", value: 33, instance: "ins-bmwh57a12" },
+    // { time: "09:00", value: 58, instance: "ins-bmwh57a12" },
+    // { time: "10:00", value: 63, instance: "ins-bmwh57a12" },
+    // { time: "11:00", value: 22, instance: "ins-bmwh57a12" },
+    // { time: "12:00", value: 123, instance: "ins-bmwh57a12" },
+  ];
+
+	  let arr = []
+	  let tem = []
+
+  	data.forEach((item,index) => {
+  		const res = tem.find(obj => obj.time === item.time)
+  		// console.log(res)
+  		if(!res){
+  			tem.push(item)
+  			// console.log(tem)
+  		} else {
+  			arr.push(tem)
+  			tem = [item]
+  		}
+  		if(index === data.length - 1) {
+  			arr.push(tem)
+  		}
+  	})
+	</script>
+</body>
+</html>
