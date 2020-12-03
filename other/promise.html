@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<button onclick="test2()">执行</button>
+	<button onclick="window.p123=1">buttton1</button>
+	<button onclick="window.p123=2">buttton2</button>
+	<script>
+		
+	// let p =	new Promise((resolve,reject)=> {
+	// 		setTimeout(()=>{
+	// 			// resolve(123)
+	// 			console.log(456)
+	// 		},1000)
+	// 	})
+
+	const sleep = () => new Promise(resolve => setTimeout(()=>{console.log(12)
+		resolve(45)
+	},1000,'done'))
+	let res
+	async function test() {
+		res = await sleep()
+		console.log(res)
+		console.log('456')
+
+	}
+
+	// test()
+
+
+	function Promise1(fn) {
+		this.state = 'pending'
+		fn(this.resolve.bind(this),this.reject.bind(this))
+
+		this.resolve = function(result) {
+			console.log(result)
+		}
+	}
+
+
+
+	const pp = () => new Promise(resolve => {
+		let timer = setInterval(() => {
+			console.log('inter')
+			if(window.p123 == 1) {
+				clearInterval(timer)
+				resolve(123)
+			}
+		}, 1000)	})
+
+	async function test2() {
+		let res = await pp() // 扫码验证的场景
+		console.log('done!!!!!')
+	}
+
+
+	</script>
+</body>
+</html>

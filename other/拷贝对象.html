@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    let jack = {
+      name: 'jack',
+      age: 40,
+      like: 'dog'
+    }
+
+    function copy(src) {
+      let dest = {}
+      let toString = Object.prototype.toString
+      if(typeof src === 'object') {
+        if(toString.call(src) === "[object Object]") {
+          for(let k in src) {
+            if(toString.call(k) === '[object Object]') {
+              dest[k] = copy(src[k])
+            }else {
+              dest[k] = src[k]
+            }
+          }
+        }
+      }else {
+        return src
+      }
+
+      return dest
+    }
+
+    let jack2 = copy(jack)
+  </script>
+</body>
+
+</html>
