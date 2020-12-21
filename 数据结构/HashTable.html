@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		class HashTable {
+			table = [];
+
+			_loseloseHashCode(key) {
+				let hash = 0;
+				for(let i = 0; i < key.length; i++) {
+					hash += key.charCodeAt(i);
+				}
+				return hash % 37;
+			}
+
+			put(key, value) {
+				let position = this._loseloseHashCode(key);
+				console.log(position + '=' + key);
+				this.table[position] = value;
+			}
+			remove(key) {
+				this.table[this._loseloseHashCode(key)] = undefined;
+			}
+			get(key) {
+				return this.table[this._loseloseHashCode(key)];
+			}
+		}
+
+		var hash = new HashTable()
+
+		hash.put('Gandalf', 'gandalf@email.com');
+		hash.put('John', 'johnsnow@email.com');
+		hash.put('Tyrion', 'tyrion@email.com');
+	</script>
+</body>
+</html>

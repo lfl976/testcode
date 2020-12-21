@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.mask {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #000;
+			opacity: 0.2;
+		}
+		.mask-inner{
+			position: absolute;
+			left: 20px;
+			top: 20px;
+			width: 100px;
+			height: 50px;
+			background: white;
+			cursor: pointer;
+		}
+		.mask-inner .bottom{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 10px;
+			cursor: ns-resize;
+		}
+		.test {
+			width: 100px;
+			height: 100px;
+			background: white;
+			transform: translate(50px,50px);
+		}
+	</style>
+</head>
+<body>
+	<p>永和九年，虽在癸丑，暮春之初，会于会稽山硬质蓝天</p>
+	<div class="test"></div>
+	<div class="mask">
+		<div id="block" style="width: 100px; height: 50px;left: 20px;top: 20px;" class="mask-inner">
+			<div id="bottom" class="bottom">=</div>
+		</div>
+	</div>
+
+	<script>
+		var block = document.getElementById('block');
+		var bottom = document.getElementById('bottom');
+
+		let baseX = parseFloat(block.style.left);
+		let baseY = parseFloat(block.style.top);
+
+		let baseWidth = parseFloat(block.style.width);
+		let baseHeight = parseFloat(block.style.height);
+
+		block.addEventListener('mousedown', function(e) {
+			console.log(e)
+			let startX = e.clientX;
+			let startY = e.clientY;
+
+			const move = (e) => {
+				const newX = e.clientX;
+				const newY = e.clientY;
+				block.style.left = baseX + (newX - startX) + 'px'
+				block.style.top = baseY + (newY - startY) + 'px'
+			}
+			const up = (e) => {
+				baseX = parseFloat(block.style.left);
+				baseY = parseFloat(block.style.top);
+				document.removeEventListener('mousemove',move);
+				document.removeEventListener('mouseup',up);
+			}
+			document.addEventListener('mousemove',move)
+			document.addEventListener('mouseup',up)
+		})
+
+		bottom.addEventListener('mousedown', function(e) {
+			console.log(e)
+			e.stopPropagation()
+			e.preventDefault()
+			let startX = e.clientX;
+			let startY = e.clientY;
+
+			const move = (e) => {
+				const newX = e.clientX;
+				const newY = e.clientY;
+				// block.style.left = baseX + (newX - startX) + 'px'
+				block.style.height = baseHeight + (newY - startY) + 'px'
+			}
+			const up = (e) => {
+				// baseWidth = parseFloat(block.style.width);
+				baseHeight = parseFloat(block.style.height);
+				document.removeEventListener('mousemove',move);
+				document.removeEventListener('mouseup',up);
+			}
+			document.addEventListener('mousemove',move)
+			document.addEventListener('mouseup',up)
+		})
+	</script>
+</body>
+</html>

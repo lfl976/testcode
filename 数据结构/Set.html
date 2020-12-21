@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		class Set {
+			items = {};
+
+			add(value) {
+				if(!this.has(value)) {
+					 this.items[value] = value;
+					 return true;
+				}
+				return false;
+			}
+			remove(value) {
+				if(this.has(value)) {
+					delete this.items[value];
+					return true;
+				}
+				return false;
+			}
+			has(value) {
+				return value in this.items;
+				// return items.hasOwnProperty(value);
+			}
+			clear() {
+				this.items = {};
+			}
+			size() {
+				return Object.keys(this.items).length;
+			}
+			values() {
+				return Object.values(this.items);
+			}
+			union(otherSet) {
+				const unionSet = new Set();
+				const selfValues = this.values();
+				for(let i = 0; i < selfValues.length; i++) {
+					unionSet.add(selfValues[i]);
+				}
+
+				const otherValues = otherSet.values();
+				for(let i = 0; i < otherValues.length; i++) {
+					unionSet.add(otherValues[i]);
+				}
+				return unionSet;
+			}
+
+		}
+
+		let set = new Set();
+		set.add(1);
+		set.add(2);
+	</script>
+</body>
+</html>
