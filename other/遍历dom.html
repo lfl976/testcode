@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let leftpad = 0
+		function traverse(ele, leftpad) {
+			console.log(Array(leftpad).fill(' ').join('')+ele.tagName)
+			
+			if(ele.childElementCount > 0) {
+				let children = ele.children
+				leftpad ++
+				for(let i = 0; i < children.length; i++) {
+					traverse(children[i], leftpad)
+				}
+			}
+		}
+		traverse(document.documentElement, leftpad)
+	</script>
+</body>
+</html>
