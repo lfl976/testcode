@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- https://www.yuque.com/u2076269/wobfti/yxpwe3 -->
+	<!-- <script>
+		var arr=[['a','b'],['n','m'],['0','1']]
+		var res = []
+
+		for(let i = 0; i < arr[0].length; i++) {
+			for(let m = 0; m < arr[1].length; m++) {
+				for(let n = 0; n < arr[2].length; n++) {
+					res.push(arr[0][i] + arr[1][m] + arr[2][n])
+				}
+			}
+		}
+		console.log(res)
+	</script> -->
+
+	<!-- <script>
+		var A = function() {};  
+		A.prototype.n = 1;  
+		var b = new A();  
+		A.prototype = { n: 2, m: 3 };  
+		var c = new A();
+
+		console.log(b.n); // 1
+		console.log(b.m); // undefined
+		console.log(c.n); // 2
+		console.log(c.m); // 3
+	</script> -->
+
+	<!-- <script>
+		function NewNew(Fn, ...args) {
+			let obj = Object.create(Fn.prototype)
+
+			Fn.call(obj, ...args)
+			return obj
+		}
+
+		function A(name) {
+			this.name = name
+		}
+		 const o = NewNew(A, 'abc')
+		 console.log(o)
+	</script>
+	<script>
+		function Person() {
+			this.age = 12
+		}
+		Person.prototype.name = 'f'
+		const o1 = Object.create(Person.prototype)
+	</script> -->
+
+	<script>
+		var arr = [1,2,3]
+		
+
+		function _map(arr, cb) {
+			return arr.reduce((acc, curr, index) => {
+				acc[index] = cb(curr, index)
+				return acc;
+			},[])
+		}
+	</script>
+</body>
+</html>
