@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style id="css-vars">
+		:root {
+			--theme-bg: black;
+			--theme-color: white;
+		}
+	</style>
+	<style>
+		.theme {
+			background-color: var(--theme-bg);
+			color: var(--theme-color);
+		}
+		button {
+			appearance: none;
+		}
+	</style>
+</head>
+<body class="theme">
+	<header>
+		<h1>hello</h1>
+		<button data-theme='dark' id="btn">theme</button>
+	</header>
+	<main>
+		<section>
+			<p>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo voluptatum ducimus animi sint commodi, pariatur et quidem suscipit! Ut, dolore. Magni, dicta harum ducimus sapiente accusamus repudiandae dolorem qui quidem.
+			</p>
+		</section>
+	</main>
+	<footer>
+		footer
+	</footer>
+	<script>
+		var btn = document.getElementById('btn')
+		var cssVars = document.getElementById('css-vars')
+		var darkTheme = `
+			:root {
+				--theme-bg: black;
+				--theme-color: white;
+			}
+		`
+		var lightTheme = `
+			:root {
+				--theme-bg: white;
+				--theme-color: black;
+			}
+		`
+		btn.onclick = () => {
+			// let css = ":root {\n"
+			// css += "  --theme-bg: white;\n"
+			// css += "  --theme-color: black;\n"
+			// css += "}\n"
+			if(btn.dataset.theme === 'dark') {
+				cssVars.innerHTML =  lightTheme
+				btn.dataset.theme = 'light'
+			} else {
+				cssVars.innerHTML =  darkTheme
+				btn.dataset.theme = 'dark'
+			}
+		}
+	</script>
+</body>
+</html>

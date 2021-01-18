@@ -33,13 +33,13 @@
 		console.log(c.n); // 2
 		console.log(c.m); // 3
 	</script> -->
-
+<!-- https://cloud.tencent.com/developer/article/1526901 -->
 	<!-- <script>
 		function NewNew(Fn, ...args) {
 			let obj = Object.create(Fn.prototype)
 
-			Fn.call(obj, ...args)
-			return obj
+			let result = Fn.call(obj, ...args)
+			return result instanceof Object ? result : obj
 		}
 
 		function A(name) {
@@ -57,15 +57,39 @@
 	</script> -->
 
 	<script>
+		// Array原型上扩展一个map方法
+		// https://www.html.cn/archives/10024
+		// const map = Array.prototype.map
+		// map.call(arr, v=>v+1)
 		var arr = [1,2,3]
-		
 
-		function _map(arr, cb) {
+		// Array.prototype._map = function(cb, that){
+		// 	let arr =  that || this
+		// 	let ret = []
+		// 	for(let i = 0; i < arr.length; i++) {
+		// 		ret[i] = cb(arr[i], i, arr)
+		// 	}
+		// 	return ret
+		// }
+
+		Array.prototype._map = function(cb, that) {
+			if(that && !Array.isArray(that)){
+				throw new Error('error parameter')
+			}
+			let arr = that || this
 			return arr.reduce((acc, curr, index) => {
-				acc[index] = cb(curr, index)
-				return acc;
+				acc[index] = cb(curr, index, arr)
+				return acc
 			},[])
 		}
+		
+
+		// function _map(arr, cb) {
+		// 	return arr.reduce((acc, curr, index) => {
+		// 		acc[index] = cb(curr, index)
+		// 		return acc;
+		// 	},[])
+		// }
 	</script>
 </body>
 </html>
