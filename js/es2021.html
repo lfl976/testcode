@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- https://backbencher.dev/javascript/es2021-new-features -->
+	<script>
+// 		const registry = new FinalizationRegistry((value) => {
+//   console.log(value);
+// });
+// 		(function () {
+//   const obj = {};
+//   registry.register(obj, "Backbencher");
+// })();
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => reject("p1"), 100);
+});
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => reject("p2"), 200);
+});
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => reject("p3"), 300);
+});
+Promise.any([p1, p2, p3]).then(first => {
+	console.log(first)
+}).catch(error => {
+	console.log(error)
+})
+	</script>
+</body>
+</html>
