@@ -16,20 +16,43 @@
 //   registry.register(obj, "Backbencher");
 // })();
 
-const p1 = new Promise((resolve, reject) => {
-  setTimeout(() => reject("p1"), 100);
-});
-const p2 = new Promise((resolve, reject) => {
-  setTimeout(() => reject("p2"), 200);
-});
-const p3 = new Promise((resolve, reject) => {
-  setTimeout(() => reject("p3"), 300);
-});
-Promise.any([p1, p2, p3]).then(first => {
-	console.log(first)
-}).catch(error => {
-	console.log(error)
-})
+// const p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => reject("p1"), 100);
+// });
+// const p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => reject("p2"), 200);
+// });
+// const p3 = new Promise((resolve, reject) => {
+//   setTimeout(() => reject("p3"), 300);
+// });
+// Promise.any([p1, p2, p3]).then(first => {
+// 	console.log(first)
+// }).catch(error => {
+// 	console.log(error)
+// })
+
+const callback = () => {
+	const obj = new WeakRef({
+		name: 'abc'
+	})
+	console.log(obj.deref().name)
+}
+
+(async function(){
+	await new Promise(resolve => {
+		setTimeout(() => {
+			callback()
+			resolve()
+		})
+	})
+
+	await new Promise(resolve => {
+		setTimeout(() => {
+			callback()
+			resolve()
+		})
+	})
+})()
 	</script>
 </body>
 </html>

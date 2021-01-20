@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      #box {
+        width: 375px;
+        height: 50vh;
+        outline: 1px solid;
+      }
+      ul,
+      li {
+        list-style-type: none;
+      }
+      .tabs {
+        overflow-x: scroll;
+        display: flex;
+      }
+      ::-webkit-scrollbar {
+        height: 3px;
+        width: 3px;
+        /* background-color: red; */
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: red;
+      }
+      .tabs > li {
+        padding: 5px 8px;
+        box-sizing: border-box;
+        border: 1px solid;
+        /* word-wrap: none; */
+        /* word-break: keep-all; */
+        white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <ul class="tabs" id="menu">
+        <li data-index="0">电影</li>
+        <li data-index="1">电视剧</li>
+        <li data-index="2">日本动漫</li>
+        <li data-index="3">爱奇艺</li>
+        <li data-index="4">YouTube</li>
+        <li data-index="5">Tabitem6</li>
+      </ul>
+    </div>
+    <script>
+      const menu = document.getElementById("menu");
+      menu.addEventListener("click", function (e) {
+        console.log(e.currentTarget.scrollLeft);
+      });
+    </script>
+  </body>
+</html>
