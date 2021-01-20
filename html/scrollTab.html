@@ -28,6 +28,8 @@
       .tabs {
         overflow-x: scroll;
         display: flex;
+        transition: all 1s;
+        /* scroll-behavior: smooth; */
       }
       ::-webkit-scrollbar {
         height: 3px;
@@ -56,12 +58,53 @@
         <li data-index="3">爱奇艺</li>
         <li data-index="4">YouTube</li>
         <li data-index="5">Tabitem6</li>
+        <li data-index="5">Tabitem7</li>
+        <li data-index="5">Tabitem8</li>
       </ul>
     </div>
     <script>
       const menu = document.getElementById("menu");
       menu.addEventListener("click", function (e) {
-        console.log(e.currentTarget.scrollLeft);
+        // console.log(e.currentTarget.scrollLeft);
+        // console.log(e);
+        let currentTarget = e.currentTarget
+        let currentWidth = e.currentTarget.offsetWidth
+        let target = e.target;
+        let previousLength = target.offsetWidth / 2
+        while(target.previousElementSibling) {
+          target = target.previousElementSibling
+          previousLength += target.offsetWidth
+        }
+        // console.log(previousLength)
+        if(previousLength <= currentWidth / 2) {
+          console.log('不需要移动')
+          currentTarget.scrollLeft = 0
+        } else {
+          let maxDistance = currentTarget.scrollWidth - currentTarget.offsetWidth
+          let distance = previousLength - currentWidth / 2
+          // console.log(distance)
+          // currentTarget.scrollLeft = 
+          let v = 0
+          let oldLeft = currentTarget.scrollLeft
+          let newLeft = Math.min(maxDistance, distance)
+          let width = newLeft - oldLeft
+
+          const slide = function() {
+            v+=6
+            let d = 0
+            if(width > 0) {
+              d = v + oldLeft
+            } else {
+              d = -v + oldLeft
+            }
+            currentTarget.scrollLeft = d
+            if(v < Math.abs(width)){
+              requestAnimationFrame(slide)
+            }
+            console.log(v)
+          }
+          requestAnimationFrame(slide)
+        }
       });
     </script>
   </body>
