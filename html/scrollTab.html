@@ -8,6 +8,7 @@
       * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
       body {
         display: flex;
@@ -20,20 +21,26 @@
         width: 375px;
         height: 50vh;
         outline: 1px solid;
+        /* border: 1px solid; */
       }
       ul,
       li {
         list-style-type: none;
       }
       .tabs {
+        width: 375px;
         overflow-x: scroll;
         display: flex;
+        align-items: flex-start;
+        height: 200px;
         transition: all 1s;
+        border: 1px solid; /*  */ /*加上border scrollLeft也会增加2px引起问题*/
         /* scroll-behavior: smooth; */
       }
       ::-webkit-scrollbar {
+        /* display: none; */
         height: 3px;
-        width: 3px;
+        width: 0;
         /* background-color: red; */
       }
       ::-webkit-scrollbar-thumb {
@@ -41,7 +48,6 @@
       }
       .tabs > li {
         padding: 5px 8px;
-        box-sizing: border-box;
         border: 1px solid;
         /* word-wrap: none; */
         /* word-break: keep-all; */
@@ -50,60 +56,73 @@
     </style>
   </head>
   <body>
-    <div id="box">
-      <ul class="tabs" id="menu">
-        <li data-index="0">电影</li>
-        <li data-index="1">电视剧</li>
-        <li data-index="2">日本动漫</li>
-        <li data-index="3">爱奇艺</li>
-        <li data-index="4">YouTube</li>
-        <li data-index="5">Tabitem6</li>
-        <li data-index="5">Tabitem7</li>
-        <li data-index="5">Tabitem8</li>
-      </ul>
-    </div>
+    <!-- <div id="box"> -->
+    <ul class="tabs" id="menu">
+      <li data-index="0">电影</li>
+      <li data-index="1">电视剧</li>
+      <li data-index="2">日本动漫</li>
+      <li data-index="3">爱奇艺</li>
+      <li data-index="4">YouTube</li>
+      <li data-index="5">Tabitem6</li>
+      <li data-index="5">Tabitem7</li>
+      <li data-index="5">Tabitem8</li>
+      <!-- chrome上会有个小间隙（用的outline,去掉box后可以），文字改成Tabitem就没有了。字母和数字混排的原因？  -->
+    </ul>
+    <!-- </div> -->
     <script>
       const menu = document.getElementById("menu");
       menu.addEventListener("click", function (e) {
-        // console.log(e.currentTarget.scrollLeft);
-        // console.log(e);
-        let currentTarget = e.currentTarget
-        let currentWidth = e.currentTarget.offsetWidth
+        let currentTarget = e.currentTarget;
+        let currentWidth = e.currentTarget.offsetWidth;
         let target = e.target;
-        let previousLength = target.offsetWidth / 2
-        while(target.previousElementSibling) {
-          target = target.previousElementSibling
-          previousLength += target.offsetWidth
+        let previousLength = target.offsetWidth / 2;
+        while (target.previousElementSibling) {
+          target = target.previousElementSibling;
+          previousLength += target.offsetWidth;
         }
-        // console.log(previousLength)
-        if(previousLength <= currentWidth / 2) {
-          console.log('不需要移动')
-          currentTarget.scrollLeft = 0
-        } else {
-          let maxDistance = currentTarget.scrollWidth - currentTarget.offsetWidth
-          let distance = previousLength - currentWidth / 2
-          // console.log(distance)
-          // currentTarget.scrollLeft = 
-          let v = 0
-          let oldLeft = currentTarget.scrollLeft
-          let newLeft = Math.min(maxDistance, distance)
-          let width = newLeft - oldLeft
-
-          const slide = function() {
-            v+=6
-            let d = 0
-            if(width > 0) {
-              d = v + oldLeft
-            } else {
-              d = -v + oldLeft
-            }
-            currentTarget.scrollLeft = d
-            if(v < Math.abs(width)){
-              requestAnimationFrame(slide)
-            }
-            console.log(v)
+        if (previousLength <= currentWidth / 2) {
+          let oldLeft = currentTarget.scrollLeft;
+          let v = 0;
+          if (oldLeft > 0) {
+            const slide = function () {
+              v += 6;
+              currentTarget.scrollLeft = Math.max(oldLeft - v, 0);
+              if (currentTarget.scrollLeft > 0) {
+                requestAnimationFrame(slide);
+              }
+            };
+            requestAnimationFrame(slide);
           }
-          requestAnimationFrame(slide)
+        } else {
+          // let maxDistance =
+          //   currentTarget.scrollWidth - currentTarget.offsetWidth; // 有border这里可以减去，下面标1那行也可以解决
+          let maxDistance =
+            currentTarget.scrollWidth - currentTarget.clientWidth; // 这样算是正确的
+          let distance = previousLength - currentWidth / 2; // border这也是？
+          let v = 0;
+          let oldLeft = currentTarget.scrollLeft;
+          let newLeft = Math.min(maxDistance, distance);
+          let width = newLeft - oldLeft; // 没有border的话，点最后一个
+          // console.log(width);
+          console.log("oldLeft:" + oldLeft);
+          console.log("newLeft:" + newLeft);
+          if (width === 0) return;
+          const slide = function () {
+            v += 6;
+            let d = 0;
+            if (width > 0) {
+              d = v + oldLeft;
+            } else {
+              d = -v + oldLeft;
+            }
+            currentTarget.scrollLeft = Math.max(0, d);
+            //currentTarget.scrollLeft = Math.min(maxDistance, d); // 1
+            if (v < Math.abs(width)) {
+              requestAnimationFrame(slide);
+            }
+            console.log(v);
+          };
+          requestAnimationFrame(slide);
         }
       });
     </script>
