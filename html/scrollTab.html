@@ -36,6 +36,7 @@
         transition: all 1s;
         border: 1px solid; /*  */ /*加上border scrollLeft也会增加2px引起问题*/
         /* scroll-behavior: smooth; */
+        background-image: linear-gradient(to right,rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
       }
       ::-webkit-scrollbar {
         /* display: none; */
@@ -51,7 +52,9 @@
         border: 1px solid;
         /* word-wrap: none; */
         /* word-break: keep-all; */
+        /* height: 100%; */
         white-space: pre;
+        line-height: 1.4;
       }
     </style>
   </head>
