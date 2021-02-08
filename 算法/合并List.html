@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function LinkedList() {
+		// 	var Node = function(element) {
+		// 		this.element = element;
+		// 		this.next = null;
+		// 	}
+
+		// 	var lenght = 0;
+		// 	this.head = null;
+
+		// 	this.append = function(element) {
+		// 		var node = new Node(element),
+		// 		current;
+
+		// 		if(this.head === null) {
+		// 			this.head = node;
+		// 		} else {
+		// 			current = this.head;
+
+		// 			while(current.next) {
+		// 				current = current.next
+		// 			}
+
+		// 			current.next = node;
+		// 		}
+		// 		length++;
+		// 	};
+			
+		// }
+
+		// var l1 = new LinkedList();
+		// l1.append(1);
+		// l1.append(2);
+		// l1.append(4);
+		// var l2 = new LinkedList();
+		// l2.append(1);
+		// l2.append(3);
+		// l2.append(4);
+
+
+	function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  	}
+		 var l1 = {
+		 	val: 1,
+		 	next: {
+		 		val: 2,
+		 		next: {
+		 			val: 4,
+		 			next: null
+		 		}
+		 	}
+		 }
+		 var l2 = {
+		 	val: 1,
+		 	next: {
+		 		val: 3,
+		 		next: {
+		 			val: 4,
+		 			next: null
+		 		}
+		 	}
+		 }
+
+		 function mergeList(l1, l2) {
+		 	var head = null
+		    var curr
+		    var p1 = l1;
+		    var p2 = l2;
+
+		    while(p1||p2) {
+		        let node = null
+		        if(p1 && p2) {
+		            if(p1.val <= p2.val) {
+		                node = new ListNode(p1.val)
+		                p1 = p1.next
+		            } else{
+		                node = new ListNode(p2.val)
+		                p2 = p2.next
+		            }
+		        } else if(p1) {
+		            node = new ListNode(p1.val)
+		            p1 = p1.next
+		        } else if(p2) {
+		            node = new ListNode(p2.val)
+		            p2 = p2.next
+		        }
+		        
+		        if(node) {
+		            if(!head){
+		                head = node
+		                curr = node
+		            }else {
+		                curr.next = node
+		                curr = node
+		            }
+		        }
+		    }
+		    return head
+		 }
+		 console.log(mergeList(l1, l2))
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function a(arg) {
+			console.log('a' + arg+ '-->')
+			return 'a1'
+		}
+		function b(arg) {
+			console.log('b' + arg+'-->')
+			return 'b1'
+		}
+		function c(arg) {
+			console.log('c' + arg+'-->')
+			return 'c1'
+		}
+		function d(arg) {
+			console.log('d' + arg+'-->')
+			return 'd1'
+		}
+
+		function compose(...funcs) {
+			let r = funcs.reduce((a, b) => {
+				return function () {
+					return a(b())
+				}
+			})
+			console.log(r)
+			return r
+		}
+
+		//
+
+		var s1 = function (arg) {
+			return a(b(arg))
+		}
+
+		var s2 = function(arg) {
+			s1(c(arg))
+		}
+		var s3 = function(arg) {
+			s2(d(arg))
+		}
+		// s3('55')
+		
+		//
+
+		a(b(c(d('55'))))
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var OrderedStream = function(n) {
+		    this.ptr = 1
+		    this.n = n
+		    this.arr = []
+		};
+		OrderedStream.prototype.insert = function(id, value) {
+	    this.arr[id] = value
+	    if(this.arr[this.ptr]) {
+	        let list = []
+	        while(this.arr[this.ptr]) {
+	            list.push(this.arr[this.ptr])
+	            this.ptr++
+	        }
+	        return list
+	    }else{
+	        return []
+	    }
+	};
+	</script>
+</body>
+</html>

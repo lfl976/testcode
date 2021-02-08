@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			Person.prototype
+			Object.getPrototypeOf
+		*/
+		function Person(name) {
+			this.name = name
+		}
+		Person.prototype.sex = 'male'
+		var person1 = new Person('lfl')
+		// ------------------------------
+		// function C(){} 
+		// function D(){} 
+		// var o = new C();
+		// console.log(o instanceof C);
+		// C.prototype = {};
+		// var o2 = new C();
+
+		// console.log(o2 instanceof C); // true
+
+		// console.log(o instanceof C);
+		// ------------------------------
+		// function Person(){
+		// }
+		// var friend = new Person();
+
+		// Person.prototype = {
+		//  constructor: Person,
+		//  name : "Nicholas",
+		//  age : 29,
+		//  job : "Software Engineer",
+		//  sayName : function () {
+		//  alert(this.name);
+		//  }
+		// };
+		// friend.sayName(); //error
+
+
+		function SuperType() {
+			this.name = '1'
+		}
+
+		SuperType.prototype.getSuperValue = function() {
+			return this.name
+		}
+
+		function SubType() {
+			this.subname = '2'
+			SuperType.call(this)
+		}
+
+		// SubType.prototype = new SuperType()
+
+		var instance = new SubType()
+		console.log(instance)
+	</script>
+</body>
+</html>

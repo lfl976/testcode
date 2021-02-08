@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box {
+			overflow: scroll;
+			width: 200px;
+			height: 200px;
+			padding: 20px;
+			background: skyblue;
+			box-sizing: border-box;
+		}
+		.box-inner {
+			height: 400px;
+			width: 220px;
+			background: green;
+		}
+		.content {
+			height: 1000px;
+		}
+		.box1 {
+			width: 300px;
+			height: 300px;
+			margin: 30px;
+			border: 5px solid #7bc2e5;
+			padding: 10px;
+			/*background-clip: content-box;
+			background-color: #8cb6c0;*/
+			background: linear-gradient(#8cb6c0, #8cb6c0) content-box, #02f5f7;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="box">
+			<div class="box-inner"></div>
+			
+		</div>
+	</div>
+	<div class="box1">
+		
+	</div>
+</body>
+</html>

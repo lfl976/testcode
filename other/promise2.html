@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// let promise = new Promise(function(resolve, reject) {
+		//   console.log('Promise');
+		//   resolve();
+		// });
+
+		// promise.then(function() {
+		//   console.log('resolved.');
+		// }).then(res=>{console.log(2223)}).then(r=>{console.log(789)});
+
+		// console.log('Hi!');
+
+
+		// let promise2 = new Promise(function(resolve, reject) {
+		//   console.log('Promise');
+		//   resolve();
+		// });
+
+		// let promise = new Promise(function(resolve, reject) {
+		//   console.log('Promise');
+		//   // resolve(2);
+		//   return 2
+		// });
+
+		// promise.then(function(d) {
+		//   console.log('resolved.');
+		// 	console.log(d)
+		// }).then(res=>{console.log(res)}).then(r=>{console.log(r)});
+
+
+		// 类似fetch，最终结果是链上 最后return的结果。
+		// async function fn() {
+		// 	let promise = new Promise(function(resolve, reject) {
+		// 	  console.log('Promise');
+		// 	  resolve(2)
+		// 	});
+			
+		// 	//console.log(await promise) // 2
+		// 	console.log(await promise.then(res=>33)) // 33
+		// }
+		// fn()
+
+
+
+		// let p = Promise.resolve('foo')
+		// 等价于
+		// let p=new Promise(resolve => resolve('foo'))
+
+		// console.log(p)
+		// p.then(res => {
+		// 	console.log(res)
+		// })
+
+		 // let p = new Promise(resolve => {
+		 // 	console.log(1)
+		 // 	resolve('foo')
+		 // 	return 5
+		 // 	console.log(2)
+		 // })
+		 // p.then(res => console.log(res))
+
+
+		async function fn() {
+			let promise = new Promise(function(resolve, reject) {
+			  // executor（生产者代码，“歌手”）
+			  resolve(5)
+			});
+
+			// console.log(await promise)
+			let a=promise.then(res => {
+				console.log(res)
+				return 45
+			})
+			console.log(await a)
+		}
+		fn()
+
+	</script>			
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function _instanceof(leftValue, rightValue) {
+			var proto = rightValue.prototype
+			var left = leftValue.__proto__
+
+			while(true) {
+				if(left === null) {
+					return false
+				}
+				if(left === proto) {
+					return true
+				}
+				left = left.__proto__
+			}
+		}
+
+		function A(name) {
+			this.name = name
+		}
+		var a = new A()
+	
+		// _instanceof(a, A)
+	</script>
+</body>
+</html>
