@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 2、不规则二维数组，做个排列组合。
+		// 输入：[ ['a', 'b'], ['苹果', '梨', '香蕉'], ['红', '黑'] ];
+		//输出：
+		//['a-苹果-红', 'a-苹果-黑', 'a-梨-红', 'a-梨-黑', 'a-香蕉-红', 'a-香蕉-黑',
+		//'b-苹果-红', 'b-苹果-黑', 'b-梨-红', 'b-梨-黑', 'b-香蕉-红', 'b-香蕉-黑' ];
+		// todo
+
+		var a = [ ['a', 'b'], ['苹果', '梨', '香蕉'], ['红', '黑'] ];
+		// var arr = a.reduce((acc, curr) => acc.map(item => curr.map(v => item + '-' +v)).flat())
+		// var arr = a.reduce((acc, curr) => {
+		// 	console.log(acc)
+		// 	return acc.map(item => curr.map(v => item + '-' +v)).flat();
+		// })
+	</script>
+	<script>
+		// 3、业务需求中，经常有 只需要最后一次请求的结果（比如搜索）编写一个高阶函数，传递旧请求方法（执行后返回 promise），返回一个新方法。
+		// 连续触发时，若上一次 promise 执行未结束则直接废弃，只有最后一次 promise 会触发then/reject。
+		/**
+		*
+		* @param {function} promiseFunction
+		* promiseFunction 示例： () => fetch('data')
+		*/
+		function lastPromise(promiseFunction) {
+		  //todo
+		  let index = 0
+		  return () => {
+		  	index ++
+		  	return new Promise(resolve => {
+		  		let flag = index
+		  		// setTimeout(() => {
+		  			// console.log(index, flag)
+			  		// if(flag === index) {
+			  		// 	resolve(promiseFunction())
+			  		// } else {
+			  		// 	resolve(promiseFunction().then(r => ''))
+			  		// }
+			  		promiseFunction().then(res => {
+			  			if(flag === index) {
+			  				resolve(res)
+			  			}
+			  		})	
+		  		// })
+		  	})
+		  }
+		}
+		// 示例
+		let count = 1;
+		let promiseFunction = () =>
+		  new Promise(rs =>
+		    window.setTimeout(() => {
+		      rs(count++);
+		    })
+		  );
+		let lastFn = lastPromise(promiseFunction);
+
+		lastFn().then(console.log); // 无输出
+		lastFn().then(console.log); // 无输出
+		lastFn().then(console.log); // 3
+	</script>	
+</body>
+</html>
