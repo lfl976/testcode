@@ -4,9 +4,42 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<style>
+		.root {
+			/*display: flex;
+			flex: 1;
+			justify-content: center;*/
+			border: 1px solid;
+			position: absolute;
+			top: 20px;
+			width: 50%;
+			text-align: center;
+		}
+		.root:nth-child(2) {
+			right: 0;
+		}
+	</style>
 </head>
 <script src="./BinarySearch.js"></script>
 <body>
-	
+	<div>45</div>
+	<script>
+		
+	function getTree(tree, parentNode) {
+		if(tree) {
+			var root = document.createElement('div')
+			root.className = "root"
+			root.textContent = tree.key
+			if(tree.left) {
+				getTree(tree.left, root)
+			}
+			if(tree.right) {
+				getTree(tree.right, root)
+			}
+			parentNode.appendChild(root)
+		}
+	}
+	getTree(tree.root, document.body)
+	</script>
 </body>
 </html>

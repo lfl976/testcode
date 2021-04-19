@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var testArr = [4,3,4,6,2,1,2]
+		function unique1(arr) {
+			var array = []
+			for(let val of arr) {
+				if(array.indexOf(val) === -1) {
+					array.push(val)
+				}
+			}
+			return array
+		}
+
+		function unique2(arr) {
+			for(let i = 0; i < arr.length - 1; i++) {
+				for(let j = i + 1; j < arr.length; j++) {
+					if(arr[i] === arr[j]) {
+						arr.splice(arr, 1)
+						j--
+					}
+				}
+			}
+			return arr
+		}
+
+		function unique3(arr) {
+			var array = []
+			for(const val of arr) {
+				if(!array.includes(val)) {
+					array.push(val)
+				}
+			}
+			return array
+		}
+		// console.log(unique1(testArr))
+		// console.log(unique2(testArr))
+		console.log(unique3(testArr))
+	</script>
+</body>
+</html>

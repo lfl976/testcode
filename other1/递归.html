@@ -34,7 +34,23 @@
 
 		
 
+		function recu4(x) {
+			x++;       // 对比recu2
+			if(x < 4) {
+				recu4(x)
+			}
+			console.log(x)
+		}
 
+		function recu5(x) {
+			x++;       // 对比recu2
+			if(x > 4) {
+				return x
+			}
+			console.log(x)
+			return recu5(x)
+			// console.log(x)
+		}
 
 
 

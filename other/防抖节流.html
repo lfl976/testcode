@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//https://segmentfault.com/a/1190000018445196
+		function print() {console.log(1)}
+		let dfn = debounce(print,1000)
+		document.onmousemove = function() {
+			dfn()
+			
+		}
+
+		// 防抖
+		// let timer
+		// function debounce(fn, delay) {
+		// 	if(timer) clearTimeout(timer)
+		// 	timer = setTimeout(function() {
+		// 		fn()
+		// 	}, delay)
+		// }
+
+		function debounce(fn, delay) {
+			let timer
+			return function(){
+				if(timer) clearTimeout(timer)
+				timer = setTimeout(function() {
+					fn()
+				},delay)
+			}
+		}
+
+		// 节流
+		function throttle(fn,delay) {
+			var timer
+			return function() {
+				if(timer) {
+					return
+				}
+				timer = setTimeout(function() {
+					fn()
+					timer=null
+				})
+			}
+		}
+	</script>
+</body>
+</html>

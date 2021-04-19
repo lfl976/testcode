@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// https://segmentfault.com/a/1190000023825602
+		// https://segmentfault.com/a/1190000019722065
+		// 一群观察者观察，事件主体
+		class Subject {
+			observers = []
+
+			add(observer) {
+				this.observers.push(observer)
+			}
+
+			notify() {
+				for(const o of this.observers) {
+					o.update()
+				}
+			}
+		}
+
+		class Observer {
+			constructor(name) {
+				this.name = name
+			}
+
+			update() {
+				console.log('我是观察者：'+this.name)
+			}
+		}
+
+		let o1 = new Observer('mike')
+		let o2 = new Observer('mike2')
+
+		let subject = new Subject()
+		subject.add(o1)
+		subject.add(o2)
+		subject.notify()
+	</script>
+</body>
+</html>

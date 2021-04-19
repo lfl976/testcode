@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var maxSlidingWindow = function(nums, k) {
+    var queue = []
+    var res = []
+    for(let right = 0; right < nums.length; right++) {
+        while(queue.length > 0 && nums[queue[queue.length - 1]] < nums[right]) {
+            queue.pop()
+        }
+        queue.push(right)
+        let left = right - k + 1
+        if(queue[0] < left) {
+        	queue.shift()
+        }
+        if(right+1 >= k) {
+            res[left] = nums[queue[0]]
+        }
+    }
+    return res
+};
+
+maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
+	</script>
+</body>
+</html>

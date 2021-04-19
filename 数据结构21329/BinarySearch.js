@@ -5,14 +5,14 @@ function BinarySearchTree() {
 		this.right = null;
 	}
 
-	 var root = null;
+	 this.root = null;
 
 	 var insertNode = function(node, newNode) {
 	 	if(newNode.key < node.key) {
 	 		if(node.left === null) {
 	 			node.left = newNode;
 	 		} else {
-	 			indertNode(node.left, newNode);
+	 			insertNode(node.left, newNode);
 	 		}
 	 	} else {
 	 		if(node.right === null) {
@@ -25,10 +25,16 @@ function BinarySearchTree() {
 
 	 this.insert = function(key) {
 	 	var newNode = new Node(key);
-	 	if(root === null) {
-	 		root = newNode;
+	 	if(this.root === null) {
+	 		this.root = newNode;
 	 	} else {
-	 		indertNode(root, newNode);
+	 		insertNode(this.root, newNode);
 	 	}
 	 }
 }
+
+var tree = new BinarySearchTree()
+for(let v of [11,7, 15, 5, 3, 9, 8,10,13,12,14,20,18,25]) {
+	tree.insert(v)
+}
+console.log(tree)
