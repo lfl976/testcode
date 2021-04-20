@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var generateParenthesis = function(n) {
+
+			function generate(level, max, s) {
+				if(level >= max) {
+					console.log(s)
+					return
+				}
+				let s1 = s + '('
+				let s2 = s + ')'
+
+				generate(level + 1, max, s1)
+				generate(level + 1, max, s2)
+			}
+			generate(0, 2 * n, '')
+
+		};
+		
+	</script>
+</body>
+</html>

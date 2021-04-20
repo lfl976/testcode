@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var getKthMagicNumber = function(k) {
+	    let res = [1], p3 = 0, p5 = 0, p7 = 0;
+		    for(let i = 1; i <= k; i++) {
+		        res[i] = Math.min(res[p3] * 3, res[p5] * 5, res[p7] * 7)
+		        if(res[i] === res[p3] * 3) p3++;
+		        if(res[i] === res[p5] * 5) p5++;
+		        if(res[i] === res[p7] * 7) p7++;
+		    }
+		    return res[k - 1]
+		};
+	</script>
+</body>
+</html>
