@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//https://es6.ruanyifeng.com/#docs/promise
+		new Promise(async (resolve, reject) => {
+		  resolve(1); //这是因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务
+		  // 延迟200ms
+          await new Promise((r) => setTimeout(r, 200)); // 这时异步，到下一轮事件循环了
+		  console.log(2);
+		}).then(r => {
+		  console.log(r);
+		});
+	</script>	
+</body>
+</html>

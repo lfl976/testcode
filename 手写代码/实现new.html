@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// https://cloud.tencent.com/developer/article/1526901
+		// https://wangdoc.com/javascript/oop/new.html
+		function _new(Fn, ...args) {
+			let obj = Object.create(Fn.prototype)
+			const result = Fn.call(obj, ...args)
+			return result instanceof Object ? result : obj;
+		}
+
+		function A() {
+			this.a = 'a'
+		}
+		
+		console.log(_new(A))
+	</script>
+</body>
+</html>

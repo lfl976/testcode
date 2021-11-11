@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		const canvas = document.getElementById('canvas');
+		canvas.width = 260;
+		canvas.height = 220;
+		const ctx = canvas.getContext('2d');
+		ctx.fillStyle = '#eeeeee';
+	      ctx.rotate(-Math.PI / 4);
+	      ctx.font = "32px serif"
+	      ctx.fillText('liufulin',-20,150);
+	      // ctx.fillText("Hello world", 10, 50);
+	      console.log(canvas.toDataURL())
+	      // document.body.style.backgroundImage = `url(${canvas.toDataURL()})`;
+	</script>	
+</body>
+</html>

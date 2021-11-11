@@ -19,6 +19,7 @@
 
 
 // function.bind(thisArg[, arg1[, arg2[, ...]]])
+// 高程p603
 Function.prototype.myBind = function(context, ...args) {
 	let fn = this;
 	return function(...rest) {

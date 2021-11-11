@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#container {
+			width: 500px;
+			height: 500px;
+		}
+		img {
+			/*width: 100%;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<script>
+		const img = new Image()
+		img.src = 'https://c.53326.com/d/file/lan20191115/quexr0qth3f.jpg'
+		document.body.appendChild(img);
+		// container.appendChild(img)
+		console.log(img.width) //样式设置了宽度才能获取到，否则是0
+	</script>
+</body>
+</html>
