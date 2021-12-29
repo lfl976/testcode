@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var img = new Image()
+		img.src = 'https://main.qcloudimg.com/raw/document/product/pdf/866_45338_cn.pdf'
+		// img.src = 'https://c.53326.com/d/file/lan20191115/quexr0qth3f.jpg'
+		// img.src = 'https://pic.netbian.com/uploads/allimg/210317/001935-1615911575642b.jpg'
+		// img.src = 'https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralBasicOCR/GeneralBasicOCR1.jpg'
+		img.onload=function() {
+			console.log(img)
+			console.log(img.width)
+		}
+	</script>
+</body>
+</html>

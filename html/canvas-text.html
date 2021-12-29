@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>	
+			canvas{
+				background-color: skyblue;
+			}
+	</style>	
+</head>
+<body>
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d')
+
+		ctx.moveTo(50, 50)
+		ctx.lineTo(350, 50)
+		ctx.stroke()
+
+		ctx.textBaseline="bottom"
+		ctx.fillText('你好', 50, 50)
+		ctx.textBaseline="top"
+		ctx.fillText('你好2', 120, 50)
+		ctx.font = "48px serif";
+		ctx.fillText('你好3', 170, 50)
+	</script>
+</body>
+</html>
