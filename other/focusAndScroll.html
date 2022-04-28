@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<button id="btn">click</button>
+	</div>
+	<input id="inp" type="text" style="margin-top: 1000px;">
+	<script>
+		// input聚焦后会滚动到可视区
+		btn.onclick = () => {
+			inp.focus()
+		}
+	</script>
+</body>
+</html>
