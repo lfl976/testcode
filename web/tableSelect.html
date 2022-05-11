@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+  		td {
+  			min-width: 50px;
+  			height: 80px;
+  		}
+  		.active {
+  			border-left: 1px solid red;
+  			border-right: 1px solid red;
+  		}
+  		table tr:first-child .active{
+  			border-top: 1px solid red;
+  		}
+  		table tr:last-child .active{
+  			border-bottom: 1px solid red;
+  		}
+	</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>1</td>
+		    <td class="active">2</td>
+		    <td>3</td>
+		</tr>
+		<tr>
+			<td>4</td>
+		    <td class="active">5</td>
+		    <td>6</td>
+		</tr>
+	</table>
+</body>
+</html>
