@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://cloudcache.tencentcs.cn/qcloud/ocr/activity/lib/pdf.worker.min.js"></script>
+	<script src="https://cloudcache.tencentcs.cn/qcloud/ocr/activity/lib/pdf.min.js"></script> -->
+    <script src="https://cloudcache.tencent-cloud.com/qcloud/ocr/activity/lib/pdf.worker.min.js"></script>
+    <script src="https://cloudcache.tencent-cloud.com/qcloud/ocr/activity/lib/pdf.min.js"></script>
+  </head>
+  <body>
+    <input type="file" id="file" />
+    <canvas id="the-canvas"></canvas>
+    <script>
+      const file = document.getElementById("file");
+      file.addEventListener("change", (e) => {
+        const f = e.target.files[0];
+        console.log(f);
+        var objectURL = window.URL.createObjectURL(f);
+
+        var loadingTask = pdfjsLib.getDocument(objectURL);
+        loadingTask.promise.then(function (pdf) {
+          console.log(pdf);
+
+          // Fetch the first page
+          var pageNumber = 1;
+          pdf.getPage(pageNumber).then(function (page) {
+            console.log("Page loaded");
+
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale });
+
+            // Prepare canvas using PDF page dimensions
+            var canvas = document.getElementById("the-canvas");
+            var context = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            var renderTask = page.render(renderContext);
+            renderTask.promise.then(function () {
+              console.log("Page rendered");
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
