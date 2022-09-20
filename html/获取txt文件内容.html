@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<a href="data:text/plain;base64,U291dGggQXJpY2EgDQpTb3V0aCBBc2lhDQpTb3V0aCBBbWVyaWNhDQo=">4564</a>
+	<input type="file" id="inp">
+	<button id="btn">click</button>
+	<script>
+		inp.addEventListener('change', (e) => {
+			console.log(e)
+			const file = e.target.files[0]
+			const reader = new FileReader();
+			reader.onload = () => {
+				console.log(reader.result.split('\r\n'))
+			} 
+			reader.readAsText(file)
+		})
+		btn.click = function() {
+			window.open('data:text/plain;base64,U291dGggQXJpY2EgDQpTb3V0aCBBc2lhDQpTb3V0aCBBbWVyaWNhDQo=')
+		}
+	</script>
+</body>
+</html>
