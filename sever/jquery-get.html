@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<button>发送一个 HTTP GET 请求并获取返回结果</button>
+	<script>
+$(document).ready(function(){
+	$("button").click(function(){
+		// $.get("./test.md",function(data,status){
+		// 	console.log(data)
+		// });
+
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onload=function(data){
+			console.log(xmlhttp.response)
+		}
+		// xmlhttp.open("GET","F://sever/test.md",true);
+		// xmlhttp.open("GET","file:///F:/sever/test.md",true);
+		xmlhttp.open("GET","./test.md",true);
+	xmlhttp.send();
+	});
+});
+</script>
+</body>
+</html>

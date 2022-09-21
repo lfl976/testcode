@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#box {
+			width: 350px;
+			height: 200px;
+			display: flex;
+			list-style: none;
+			border: 2px solid;
+			overflow: scroll;
+		}
+		::-webkit-scrollbar {
+	        height: 3px;
+	        width: 0;
+	        /* width: 3px; */
+	        /* background-color: red; */
+	      }
+	      ::-webkit-scrollbar-thumb {
+	        background-color: green;
+	      }
+		li {
+			border: 2px solid;
+			white-space: pre;
+		}
+		.body {
+			width: 350px;
+		}
+	</style>
+</head>
+<body>
+	<div class="body">
+	<ul id="box">
+		<li>中文汉字1</li>
+		<li>中文汉字2</li>
+		<li>中文汉字3</li>
+		<li>中文汉字4</li>
+		<li>中文汉字5</li>
+		<li>中文汉字6</li>
+		<li>中文汉字7</li>
+		<li>中文汉字8</li>
+		<li>中文汉字9</li>
+	</ul>
+</div>
+</body>
+</html>
